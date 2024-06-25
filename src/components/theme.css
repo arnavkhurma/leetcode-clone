@@ -1,0 +1,26 @@
+.container {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    margin-top: 10vh;
+    width: 200vh;
+    min-height: 65vh;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 16px;
+    font-size: 16px;
+    background: #fff;
+}
+
+.table {
+    background: #fff;
+}
