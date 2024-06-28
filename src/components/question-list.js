@@ -1,7 +1,16 @@
 import React from 'react';
 import './theme.css';
+import { useNavigate } from "react-router-dom";
+import Navigation from './navigation';
 
-function Question() {
+function Questions() {
+
+    const navigate = useNavigate();
+
+    const handleSignUpLogIn = () => {
+        navigate('/question');
+    };
+
     const questions = {
         "1": {
             'Status': 'In Progress',
@@ -43,39 +52,42 @@ function Question() {
     }
 
     return (
-        <div className="container">
-            <div className="card" style={{ background: "transparent", border: "1px solid transparent", borderRadius: "10%" }}>
-                <div className="card-body">
-                    <table className="table">
-                        <thead style={{ background: "transparent", borderBottom: "1px solid #d3d3d3" }}>
-                            <tr style={{ background: "transparent" }}>
-                                <th style={{ background: "transparent" }} scope="col">Status</th>
-                                <th style={{ background: "transparent" }} scope="col">Title</th>
-                                <th style={{ background: "transparent" }} scope="col">Solution</th>
-                                <th style={{ background: "transparent" }} scope="col">Acceptance</th>
-                                <th style={{ background: "transparent" }} scope="col">Difficulty</th>
-                                <th style={{ background: "transparent" }} scope="col">Frequency</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.entries(questions).map(([key, question]) => (
-                                <tr key={key}>
-                                    <td>{question.Status}</td>
-                                    <td>{question.Title}</td>
-                                    <td>{question.Solution}</td>
-                                    <td>{question.Acceptance}</td>
-                                    <td style={{ color: getDiffColor(question.Difficulty) }}>
-                                        {question.Difficulty}
-                                    </td>
-                                    <td>{question.Frequency}</td>
+        <>
+            <Navigation />
+            <div className="container">
+                <div className="card" style={{ background: "transparent", border: "1px solid transparent", borderRadius: "10%" }}>
+                    <div className="card-body">
+                        <table className="table">
+                            <thead style={{ background: "transparent", borderBottom: "1px solid #d3d3d3" }}>
+                                <tr style={{ background: "transparent" }}>
+                                    <th style={{ background: "transparent" }} scope="col">Status</th>
+                                    <th style={{ background: "transparent" }} scope="col">Title</th>
+                                    <th style={{ background: "transparent" }} scope="col">Solution</th>
+                                    <th style={{ background: "transparent" }} scope="col">Acceptance</th>
+                                    <th style={{ background: "transparent" }} scope="col">Difficulty</th>
+                                    <th style={{ background: "transparent" }} scope="col">Frequency</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {Object.entries(questions).map(([key, question]) => (
+                                    <tr key={key}>
+                                        <td onClick={handleSignUpLogIn} style={{ cursor: "default" }} >{question.Status}</td>
+                                        <td onClick={handleSignUpLogIn} style={{ cursor: "default" }} >{question.Title}</td>
+                                        <td style={{ cursor: "default" }} >{question.Solution}</td>
+                                        <td onClick={handleSignUpLogIn} style={{ cursor: "default" }} >{question.Acceptance}</td>
+                                        <td onClick={handleSignUpLogIn} style={{ color: getDiffColor(question.Difficulty), cursor: "default" }}>
+                                            {question.Difficulty}
+                                        </td>
+                                        <td style={{ cursor: "default" }} >{question.Frequency}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
-export default Question;
+export default Questions;

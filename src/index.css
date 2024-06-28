@@ -18,11 +18,13 @@ body {
 .table td:first-child {
   border-top-left-radius: 21px;
   border-bottom-left-radius: 21px;
+  border-left-color: #000;
 }
 
 .table th:last-child,
 .table td:last-child {
   border-top-right-radius: 21px;
   border-bottom-right-radius: 21px;
+  border-right-color: #000;
 }
 
